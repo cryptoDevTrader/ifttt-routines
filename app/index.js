@@ -53,6 +53,8 @@ const app = Http.createServer((req, res) => {
 		return;
 	}
 
+	log.debug('Url:', url);
+
 	try {
 		route(url, res);
 	} catch (e) {
