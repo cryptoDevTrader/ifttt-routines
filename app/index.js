@@ -34,7 +34,7 @@ const routes = Object.keys(routines).reduce((obj, key) => {
 
 routes['/heartbeat'] = (url, res) => {
 	res.writeHead(200);
-	res.end();
+	res.end('Hello world.');
 };
 
 const app = Http.createServer((req, res) => {
