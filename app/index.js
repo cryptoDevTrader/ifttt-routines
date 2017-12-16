@@ -24,10 +24,18 @@ const routes = Object.keys(routines).reduce((obj, key) => {
 		routines[key].forEach(event => ifttt.trigger(event, () => {
 			log.debug("Trigger called for event:", event);
 		}));
+
+		res.writeHead(200);
+		res.end();
 	};
 
 	return obj;
 }, {});
+
+routes['/heartbeat'] = (url, res) => {
+	res.writeHead(200);
+	res.end();
+};
 
 const app = Http.createServer((req, res) => {
 	const { headers, method } = req;
