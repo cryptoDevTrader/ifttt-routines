@@ -38,11 +38,8 @@ routes['/heartbeat'] = (url, res) => {
 };
 
 const app = Http.createServer((req, res) => {
-	const { headers, method } = req;
 	const url = Url.parse(req.url, true);
 	const route = routes[url.pathname];
-
-	log.debug(headers, method);
 
 	if (url.query.access_code !== process.env.ACCESS_CODE) {
 		res.writeHead(403);
